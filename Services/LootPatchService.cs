@@ -7,6 +7,7 @@ using SPTarkov.DI.Annotations;
 using SPTarkov.Server.Core.Models.Common;
 using SPTarkov.Server.Core.Models.Eft.Common;
 using SPTarkov.Server.Core.Services;
+using SPTarkov.Server.Core.Models.Spt.Tables;
 using Microsoft.Extensions.Logging;
 
 namespace KeyHunter.Services
@@ -14,7 +15,7 @@ namespace KeyHunter.Services
     [Injectable(InjectionType.Singleton)]
     public class LootPatchService
     {
-        private readonly DatabaseService _databaseService;
+        private readonly LocationTable _locationTable;
         private readonly ConfigService _configService;
         private readonly KeyDataService _keyDataService;
         private readonly PlayerLevelService _playerLevelService;
@@ -22,14 +23,14 @@ namespace KeyHunter.Services
         private readonly ILogger<LootPatchService> _logger;
 
         public LootPatchService(
-            DatabaseService databaseService,
+            LocationTable locationTable,
             ConfigService configService,
             KeyDataService keyDataService,
             PlayerLevelService playerLevelService,
             LevelMultiplierService levelMultiplierService,
             ILogger<LootPatchService> logger)
         {
-            _databaseService = databaseService;
+            _locationTable = locationTable;
             _configService = configService;
             _keyDataService = keyDataService;
             _playerLevelService = playerLevelService;
@@ -48,7 +49,7 @@ namespace KeyHunter.Services
 
             _keyDataService.Initialize();
 
-            var locations = _databaseService.GetLocations().GetDictionary();
+            var locations = _locationTable.GetDictionary();
 
             foreach ((string locationId, Location location) in locations)
             {

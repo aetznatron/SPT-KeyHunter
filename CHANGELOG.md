@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.1.0] - 2026-11-03
+
+### Changed
+- Ported to SPT 4.1.x (built and tested against SPT 4.1.6 / EFT 0.16.9.5.40743, .NET 10).
+- NuGet package `SPTarkov.Server.Core` 4.0.11 -> `SPTushonka.Server.Core` 4.1.6; logging abstractions 10.0.9.
+- `AbstractModMetadata` -> `IModMetadata`, `IsBundleMod` dropped, `HasPrepatcher` added.
+- `IOnLoad.OnLoad()` -> `OnLoadAsync(CancellationToken)`; load order `PostDBModLoader` -> `Preload` (custom data must be in the database before profiles load).
+- `DatabaseService` -> `TemplateTable` (`Items`, `Handbook`) and `LocationTable` (`GetDictionary()`).
+- Target framework `net9.0` -> `net10.0`.
+- Mod folder is `SPT_Runtime/user/mods/KeyHunter` on SPT 4.1.x.
+
 ## [2.0.1] - 2026-02-04
 
 ### Fixed

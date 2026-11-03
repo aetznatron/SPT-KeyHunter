@@ -4,26 +4,27 @@ using SPTarkov.DI.Annotations;
 using SPTarkov.Server.Core.Models.Eft.Common.Tables;
 using SPTarkov.Server.Core.Services;
 using SPTarkov.Server.Core.Models.Common;
+using SPTarkov.Server.Core.Models.Spt.Tables;
 
 namespace KeyHunter.Services
 {
     [Injectable(InjectionType.Singleton)]
     public class KeyDataService
     {
-        private readonly DatabaseService _databaseService;
+        private readonly TemplateTable _templateTable;
         private Dictionary<string, KeyInfo> _keyCache = new();
         private bool _isInitialized = false;
 
-        public KeyDataService(DatabaseService databaseService)
+        public KeyDataService(TemplateTable templateTable)
         {
-            _databaseService = databaseService;
+            _templateTable = templateTable;
         }
 
         public void Initialize()
         {
             if (_isInitialized) return;
 
-            var items = _databaseService.GetItems();
+            var items = _templateTable.Items;
             foreach (var kvp in items)
             {
                 var item = kvp.Value;

@@ -1,6 +1,6 @@
-# KeyHunter for SPT 4.x
+# KeyHunter for SPT 4.1.x
 
-This mod was inspired by the "KeysInLoot" concept created by MusicManiac, designed for SPT 4.0.11+.
+This mod was inspired by the "KeysInLoot" concept created by MusicManiac, designed for SPT 4.1.x (built and tested against 4.1.6).
 It increases the spawn rate of keys and keycards in specific containers (Jackets, Duffles, Dead Scavs) without flooding the loot tables.
 
 ## What's New in v2.0.0

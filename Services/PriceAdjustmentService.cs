@@ -2,6 +2,7 @@ using System.Linq;
 using SPTarkov.DI.Annotations;
 using SPTarkov.Server.Core.Models.Eft.Common.Tables;
 using SPTarkov.Server.Core.Services;
+using SPTarkov.Server.Core.Models.Spt.Tables;
 using Microsoft.Extensions.Logging;
 using KeyHunter.Config;
 
@@ -10,17 +11,17 @@ namespace KeyHunter.Services
     [Injectable(InjectionType.Singleton)]
     public class PriceAdjustmentService
     {
-        private readonly DatabaseService _databaseService;
+        private readonly TemplateTable _templateTable;
         private readonly ConfigService _configService;
         private readonly ILogger<PriceAdjustmentService> _logger;
         private bool _pricesAdjusted = false;
 
         public PriceAdjustmentService(
-            DatabaseService databaseService,
+            TemplateTable templateTable,
             ConfigService configService,
             ILogger<PriceAdjustmentService> logger)
         {
-            _databaseService = databaseService;
+            _templateTable = templateTable;
             _configService = configService;
             _logger = logger;
         }
@@ -44,8 +45,8 @@ namespace KeyHunter.Services
 
             try
             {
-                var items = _databaseService.GetItems();
-                var handbook = _databaseService.GetHandbook();
+                var items = _templateTable.Items;
+                var handbook = _templateTable.Handbook;
 
                 int adjustedCount = 0;
 
