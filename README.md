@@ -1,5 +1,11 @@
 # KeyHunter for SPT 4.1.x
 
+> **SPT 4.1.x port** — this fork is maintained by **aetznatron** and ports KeyHunter to SPT 4.1.x
+> (client 0.16.9.x). Original by **miXXed234** ([miXXed234/SPT-KeyHunter](https://github.com/miXXed234/SPT-KeyHunter)).
+>
+> Building and installing the ported version: see [BUILDING.md](BUILDING.md) and `build-spt.ps1`.
+> Build notes further down are upstream text and may be outdated.
+
 This mod was inspired by the "KeysInLoot" concept created by MusicManiac, designed for SPT 4.1.x (built and tested against 4.1.6).
 It increases the spawn rate of keys and keycards in specific containers (Jackets, Duffles, Dead Scavs) without flooding the loot tables.
 
